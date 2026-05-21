@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>경남 도의원 통영시 제 2선거구 후보 김태종</title>
-    
+
     <!-- Pretendard Font -->
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
     <style>
         /* ==========================================
            1. CSS Variables & Base (Sensational / Cinematic)
@@ -19,7 +21,7 @@
             --color-red: #E61E2B;
             --color-gray-dark: #222222;
             --color-gray-light: #EEEEEE;
-            
+
             --padding-x: clamp(20px, 5vw, 60px);
         }
 
@@ -32,7 +34,8 @@
 
         html {
             scroll-behavior: smooth;
-            background: var(--color-black); /* 전체 배경을 블랙으로 톤다운 */
+            background: var(--color-black);
+            /* 전체 배경을 블랙으로 톤다운 */
         }
 
         body {
@@ -43,21 +46,27 @@
             overflow-x: hidden;
         }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
 
         /* 공통 타이포그래피 설정 */
         .text-reveal {
             overflow: hidden;
         }
-        
-        .text-reveal > span {
+
+        .text-reveal>span {
             display: inline-block;
             transform: translateY(100%);
             transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
-        .text-reveal.active > span {
+
+        .text-reveal.active>span {
             transform: translateY(0);
         }
 
@@ -69,17 +78,32 @@
             transform: translateY(60px);
             transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .reveal-up.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        .reveal-delay-1 { transition-delay: 0.15s; }
-        .reveal-delay-2 { transition-delay: 0.3s; }
-        .reveal-delay-3 { transition-delay: 0.45s; }
+
+        .reveal-delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.3s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.45s;
+        }
 
         @keyframes cinematicZoom {
-            0% { transform: scale(1.0); }
-            100% { transform: scale(1.15); }
+            0% {
+                transform: scale(1.0);
+            }
+
+            100% {
+                transform: scale(1.15);
+            }
         }
 
         /* ==========================================
@@ -159,28 +183,33 @@
 
         .hero-media {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             background-image: url("main_banner_03.jpg");
             background-size: cover;
             background-position: 0 60%;
         }
-        
+
         .hero-media::after {
             content: '';
             position: absolute;
             inset: 0;
             /* 극적인 텍스트 가독성을 위한 그라데이션 오버레이 */
-            background: linear-gradient(to top, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.2) 50%, rgba(5,5,5,0.5) 100%);
+            background: linear-gradient(to top, rgba(5, 5, 5, 0.9) 0%, rgba(5, 5, 5, 0.2) 50%, rgba(5, 5, 5, 0.5) 100%);
         }
 
-        .hero-media img, .hero-media video {
-            width: 100%; height: 100%;
+        .hero-media img,
+        .hero-media video {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             object-position: top center;
             transform: scale(1.05);
-            animation: cinematicZoom 30s ease-out forwards; /* 줌 애니메이션 추가 */
+            animation: cinematicZoom 30s ease-out forwards;
+            /* 줌 애니메이션 추가 */
         }
 
         .hero-content {
@@ -205,7 +234,8 @@
         }
 
         .hero-title {
-            font-size: clamp(4rem, 10vw, 12rem); /* 화면 꽉 차는 거대한 타이포 */
+            font-size: clamp(4rem, 10vw, 12rem);
+            /* 화면 꽉 차는 거대한 타이포 */
             font-weight: 900;
             line-height: 0.9;
             letter-spacing: -0.04em;
@@ -224,7 +254,7 @@
             font-weight: 400;
             max-width: 800px;
             line-height: 1.5;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .instagram {
@@ -272,7 +302,7 @@
         }
 
         .mobile-widget {
-        display: none;
+            display: none;
         }
 
         /* ==========================================
@@ -297,7 +327,7 @@
             line-height: 1.1;
             letter-spacing: -0.05em;
         }
-        
+
         .vision-huge-text span {
             color: var(--color-red);
         }
@@ -340,7 +370,7 @@
             letter-spacing: -0.05em;
             margin-bottom: 100px;
             line-height: 1;
-            border-bottom: 2px solid rgba(255,255,255,0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             padding-bottom: 40px;
         }
 
@@ -349,20 +379,21 @@
             grid-template-columns: auto 1fr;
             gap: clamp(40px, 8vw, 120px);
             padding: 80px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             align-items: start;
             transition: padding-left 0.4s ease;
         }
 
         .pledge-item:hover {
-            padding-left: 40px; /* 호버 시 전체 항목이 살짝 밀리는 고급스러운 모션 */
+            padding-left: 40px;
+            /* 호버 시 전체 항목이 살짝 밀리는 고급스러운 모션 */
         }
 
         .pledge-num {
             font-size: clamp(6rem, 12vw, 16rem);
             font-weight: 900;
             color: transparent;
-            -webkit-text-stroke: 2px rgba(255,255,255,0.3);
+            -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
             line-height: 0.8;
             font-family: 'Arial', sans-serif;
             transition: all 0.4s ease;
@@ -404,7 +435,7 @@
         .pledge-detail-item {
             font-size: clamp(1.1rem, 1.2vw, 1.4rem);
             font-weight: 400;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             position: relative;
             padding-left: 24px;
             line-height: 1.6;
@@ -461,6 +492,94 @@
             font-weight: 500;
         }
 
+        .youtube-section {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 150px var(--padding-x);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .yt-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .yt-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .yt-thumbnail {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 8px;
+            background: var(--color-gray-dark);
+        }
+
+        .yt-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .yt-item:hover .yt-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .yt-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--color-red);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .yt-play-btn::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 16px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 4px;
+        }
+
+        .yt-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .yt-item:hover .yt-title {
+            color: var(--color-red);
+        }
+
         /* ==========================================
            7. Footer (Massive Statement)
            ========================================== */
@@ -484,7 +603,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            border-top: 2px solid rgba(255,255,255,0.3);
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
             padding-top: 40px;
             font-weight: 500;
             font-size: 1.1rem;
@@ -498,12 +617,13 @@
            Mobile Responsive Adjustments 
            (1200px / 1024px / 768px / 576px)
            ========================================== */
-        
+
         /* 1200px: 데스크탑 및 큰 태블릿 (가로) */
         @media (max-width: 1200px) {
             .vision-grid {
                 gap: 60px;
             }
+
             .pledge-item {
                 gap: 80px;
             }
@@ -519,37 +639,47 @@
                 padding: 100px var(--padding-x) 0;
             }
 
-            .vision, .pledges, .timeline {
+            .vision,
+            .pledges,
+            .timeline {
                 padding: 100px var(--padding-x);
             }
 
             .pc-widget {
                 display: none;
             }
-            
+
             .mobile-widget {
                 display: block;
-             }
+            }
+
             .vision-grid {
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
+
             /* 태블릿에서 텍스트가 가로로 길게 이어지도록 처리 */
             .vision-huge-text {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 15px;
             }
+
             .vision-huge-text br {
                 display: none;
             }
-            
+
             .timeline-item {
                 grid-template-columns: 1fr;
                 gap: 15px;
                 padding: 40px 0;
             }
-            
+
+            .youtube-section {
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+
             .footer-bottom {
                 flex-direction: column;
                 align-items: flex-start;
@@ -563,12 +693,14 @@
             .nav-links {
                 display: none;
             }
+
             .menu-btn {
                 display: block;
             }
+
             .hero {
                 padding-bottom: 5vh;
-                height:60vh;
+                height: 60vh;
             }
 
             .insta-grid {
@@ -580,28 +712,49 @@
                 gap: 20px;
                 padding: 60px 0;
             }
+
             .pledge-item:hover {
-                padding-left: 0; /* 모바일에서는 호버 애니메이션 비활성화 (터치 간섭 방지) */
+                padding-left: 0;
+                /* 모바일에서는 호버 애니메이션 비활성화 (터치 간섭 방지) */
             }
-            
+
             .instagram {
                 padding: 80px var(--padding-x) 0;
             }
 
 
             /* 모바일 섹션 상하 여백 축소 */
-            .vision, .pledges, .timeline {
+            .vision,
+            .pledges,
+            .timeline {
                 padding-top: 80px;
                 padding-bottom: 80px;
             }
+
+            .youtube-section {
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+
+            .youtube-grid {
+                gap: 25px;
+                grid-template-columns: 1fr;
+                margin-top: 30px;
+            }
+
+            .yt-item:hover {
+                transform: none;
+            }
+
             footer {
                 padding-top: 100px;
                 padding-bottom: 40px;
             }
-            
+
             .section-header-huge {
                 margin-bottom: 60px;
             }
+
             .footer-slogan {
                 margin-bottom: 60px;
             }
@@ -610,65 +763,85 @@
         /* 576px: 스마트폰 세로 */
         @media (max-width: 576px) {
             :root {
-                --padding-x: 20px; /* 좌우 여백 고정 */
+                --padding-x: 20px;
+                /* 좌우 여백 고정 */
             }
+
             header {
                 padding: 20px var(--padding-x);
             }
-            
+
             /* 디테일 폰트 사이즈 강제 조정 (가독성 확보) */
             .hero-title {
                 font-size: 3.5rem;
             }
+
             .hero-desc {
                 font-size: 1.15rem;
             }
-            
+
             .vision-huge-text {
                 flex-direction: column;
                 gap: 0;
                 font-size: 2.8rem;
             }
+
             .vision-huge-text br {
-                display: block; /* 모바일에서는 다시 줄바꿈 허용 */
+                display: block;
+                /* 모바일에서는 다시 줄바꿈 허용 */
             }
-            
+
             .section-header-huge {
                 font-size: 2.5rem;
             }
-            
+
             .pledge-num {
                 font-size: 4rem;
             }
+
             .pledge-title {
                 font-size: 1.8rem;
             }
+
             .pledge-detail-item {
                 padding-left: 20px;
                 font-size: 1.05rem;
             }
+
             .pledge-detail-item::before {
                 top: 8px;
                 width: 6px;
                 height: 6px;
             }
-            
+
             .t-badge {
                 font-size: 1.1rem;
             }
+
             .t-content h4 {
                 font-size: 1.5rem;
             }
+
             .t-content p {
                 font-size: 1.05rem;
             }
-            
+
+            .yt-title {
+                font-size: 1.1rem;
+            }
+
+            .yt-play-btn {
+                width: 50px;
+                height: 50px;
+            }
+
             .footer-slogan {
                 font-size: 2.5rem;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -699,19 +872,27 @@
     </section>
 
     <!-- Instagram Section -->
-     <section id="instagram" class="instagram">
+    <section id="instagram" class="instagram">
         <div class="insta-grid">
             <script src="https://snapwidget.com/js/snapwidget.js"></script>
             <div class="widget-container pc-widget">
-                <a href="https://www.instagram.com/kimtaejong_ty/" target="_blank" rel="noopener noreferrer" class="click-overlay"></a>
-                <iframe src="https://snapwidget.com/embed/1122404" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; overflow: hidden; width: 100%; height: 518px;" title="Posts from Instagram" id="iFrameResizer0"></iframe>
+                <a href="https://www.instagram.com/kimtaejong_ty/" target="_blank" rel="noopener noreferrer"
+                    class="click-overlay"></a>
+                <iframe src="https://snapwidget.com/embed/1122404" class="snapwidget-widget" allowtransparency="true"
+                    frameborder="0" scrolling="no"
+                    style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; overflow: hidden; width: 100%; height: 518px;"
+                    title="Posts from Instagram" id="iFrameResizer0"></iframe>
             </div>
             <div class="widget-container mobile-widget">
-                <a href="https://www.instagram.com/kimtaejong_ty/" target="_blank" rel="noopener noreferrer" class="click-overlay"></a>
-                <iframe src="https://snapwidget.com/embed/1122408" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; overflow: hidden; width: 100%; height: 0px;" title="Posts from Instagram" id="iFrameResizer1"></iframe>
+                <a href="https://www.instagram.com/kimtaejong_ty/" target="_blank" rel="noopener noreferrer"
+                    class="click-overlay"></a>
+                <iframe src="https://snapwidget.com/embed/1122408" class="snapwidget-widget" allowtransparency="true"
+                    frameborder="0" scrolling="no"
+                    style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; overflow: hidden; width: 100%; height: 0px;"
+                    title="Posts from Instagram" id="iFrameResizer1"></iframe>
             </div>
         </div>
-     </section>
+    </section>
 
     <!-- Vision Section -->
     <section id="vision" class="vision">
@@ -722,7 +903,8 @@
                 <span>있습니다.</span>
             </div>
             <div class="vision-content reveal-up reveal-delay-1">
-                <p>서울대에서 정치학을 공부하고, 변호사로서 일하며 많은 사람들의 이야기를 들었습니다. 억울한 일을 겪은 분들, 법과 제도의 벽 앞에서 막막해하던 분들, 하루하루 성실히 살아가지만 정작 필요한 도움을 받지 못했던 분들을 만났습니다.</p>
+                <p>서울대에서 정치학을 공부하고, 변호사로서 일하며 많은 사람들의 이야기를 들었습니다. 억울한 일을 겪은 분들, 법과 제도의 벽 앞에서 막막해하던 분들, 하루하루 성실히 살아가지만 정작
+                    필요한 도움을 받지 못했던 분들을 만났습니다.</p>
                 <p>그때마다 저는 생각했습니다. <strong>정치는 거창한 말이 아니라 시민의 삶 가까이에 있어야 한다고.</strong> 이제 저는 그 마음으로 통영 앞에 서고자 합니다.</p>
                 <p>도의원은 멀리 있는 자리가 아닙니다. 통영과 도청 사이를 예산과 정책으로 연결하고, 시민의 불편을 제도로 바꾸고, 지역의 작은 목소리가 경남도정에 닿게 만드는 자리입니다.</p>
                 <div class="vision-signature">경남 도의원 통영시 제 2선거구 후보 김태종</div>
@@ -733,7 +915,7 @@
     <!-- Promises Section (Brutalist Index) -->
     <section id="pledges" class="pledges">
         <h2 class="section-header-huge reveal-up">김태종의 약속.</h2>
-        
+
         <div class="pledge-item reveal-up">
             <div class="pledge-num">01</div>
             <div class="pledge-content">
@@ -746,7 +928,8 @@
                     <div class="pledge-detail-item">통영형 분산에너지 특화지역 지정 및 수산·해양 융합 마스터플랜</div>
                     <div class="pledge-detail-item">통영형 분산에너지 특화지역 연계 4대 민생 혁신 전략 로드맵</div>
                     <div class="pledge-detail-item">LNG냉열기반융복합신산업육성 및 대기업 투자를 위한 정책 거버넌스와 법·제도적 실행</div>
-                    <div class="pledge-detail-item">RE100 전환을 위한 통영 법송일반산업단지 해양바이오 · 스마트 콜드체인 거점 특화단지 리빌딩(Re-Building)</div>
+                    <div class="pledge-detail-item">RE100 전환을 위한 통영 법송일반산업단지 해양바이오 · 스마트 콜드체인 거점 특화단지 리빌딩(Re-Building)
+                    </div>
                     <div class="pledge-detail-item">통영형 기후위기 대응 및 청년 정착을 위한 에너지·농업 통합 실증센터 구축</div>
                 </div>
             </div>
@@ -852,6 +1035,14 @@
         </div>
     </section>
 
+    <section id="youtube" class="youtube">
+        <section id="youtube" class="youtube-section">
+            <h2 class="section-header-huge reveal-up">생생한 현장.</h2>
+            <div class="youtube-grid reveal-up reveal-delay-1" id="youtube-feed">
+            </div>
+        </section>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-slogan">
@@ -898,7 +1089,7 @@
             document.querySelectorAll('.reveal-up').forEach(el => {
                 observer.observe(el);
             });
-            
+
             // 3. 부드러운 스크롤 이동
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -909,6 +1100,42 @@
                 });
             });
         });
+
+        // 4. YouTube RSS Feed 실시간 연동 (rss2json 활용)
+        // 주의: YOUR_CHANNEL_ID 부분에 실제 유튜브 채널 ID를 입력해야 합니다.
+        const channelId = 'https://www.youtube.com/channel/UCinTIL2qiPWeomzcQLE4NlA';
+        const rssUrl = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    const feedContainer = document.getElementById('youtube-feed');
+                    feedContainer.innerHTML = ''; // 로딩 텍스트 등 초기화
+
+                    // 최신 영상 3개만 가져오기
+                    const videos = data.items.slice(0, 3);
+
+                    videos.forEach(video => {
+                        // 고화질 썸네일 주소로 변환
+                        const hqThumbnail = video.thumbnail.replace('hqdefault', 'maxresdefault');
+
+                        const html = `
+                                <a href="${video.link}" target="_blank" rel="noopener noreferrer" class="yt-item">
+                                    <div class="yt-thumbnail">
+                                        <img src="${hqThumbnail}" alt="${video.title}" onerror="this.src='${video.thumbnail}'">
+                                        <div class="yt-play-btn"></div>
+                                    </div>
+                                    <h3 class="yt-title">${video.title}</h3>
+                                </a>
+                            `;
+                        feedContainer.insertAdjacentHTML('beforeend', html);
+                    });
+                }
+            })
+            .catch(error => console.error('유튜브 영상을 불러오는 중 에러가 발생했습니다:', error));
     </script>
 </body>
+
 </html>
