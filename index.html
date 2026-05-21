@@ -1103,7 +1103,7 @@
 
         // 4. YouTube RSS Feed 실시간 연동 (rss2json 활용)
         // 주의: YOUR_CHANNEL_ID 부분에 실제 유튜브 채널 ID를 입력해야 합니다.
-        const channelId = 'https://www.youtube.com/channel/UCinTIL2qiPWeomzcQLE4NlA';
+        const channelId = 'UCinTIL2qiPWeomzcQLE4NlA';
         const rssUrl = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
         const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
 
