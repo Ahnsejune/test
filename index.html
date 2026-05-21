@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>경남 도의원 통영시 제 2선거구 후보 김태종</title>
+    
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <style>
+        /* ==========================================
+           1. CSS Variables & Base (Sensational / Cinematic)
+           ========================================== */
+        :root {
+            /* 극단적인 대비를 위한 컬러 팔레트 */
+            --color-black: #050505;
+            --color-white: #FFFFFF;
+            --color-red: #E61E2B;
+            --color-gray-dark: #222222;
+            --color-gray-light: #EEEEEE;
+            
+            --padding-x: clamp(20px, 5vw, 60px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--color-black); /* 전체 배경을 블랙으로 톤다운 */
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            color: var(--color-white);
+            line-height: 1.4;
+            word-break: keep-all;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* 공통 타이포그래피 설정 */
+        .text-reveal {
+            overflow: hidden;
+        }
+        
+        .text-reveal > span {
+            display: inline-block;
+            transform: translateY(100%);
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .text-reveal.active > span {
+            transform: translateY(0);
+        }
+
+        /* ==========================================
+           트랜지션 애니메이션 (새로 추가)
+           ========================================== */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+
+        @keyframes cinematicZoom {
+            0% { transform: scale(1.0); }
+            100% { transform: scale(1.15); }
+        }
+
+        /* ==========================================
+           2. Header (Minimalist Overlay)
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px var(--padding-x);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference; /* 배경색에 따라 반전되는 하이엔드 효과 */
+            color: var(--color-white);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--color-red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-red);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+        }
+
+        /* ==========================================
+           3. Hero Section (Full-bleed Cinematic)
+           ========================================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--padding-x);
+            padding-bottom: 8vh;
+            overflow: hidden;
+        }
+
+        .hero-media {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-media::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            /* 극적인 텍스트 가독성을 위한 그라데이션 오버레이 */
+            background: linear-gradient(to top, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.2) 50%, rgba(5,5,5,0.5) 100%);
+        }
+
+        .hero-media img, .hero-media video {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transform: scale(1.05);
+            animation: cinematicZoom 30s ease-out forwards; /* 줌 애니메이션 추가 */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-badge {
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+            font-weight: 700;
+            color: var(--color-red);
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 10vw, 12rem); /* 화면 꽉 차는 거대한 타이포 */
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .hero-title mark {
+            background: transparent;
+            color: var(--color-red);
+        }
+
+        .hero-desc {
+            font-size: clamp(1.2rem, 2vw, 2rem);
+            font-weight: 400;
+            max-width: 800px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .instagram {
+            padding: 150px var(--padding-x) 0;
+            background: var(--color-white);
+        }
+
+        .widget-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .click-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        .insta-grid {}
+
+        .insta-item {
+            aspect-ratio: 1 / 1;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .insta-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: scale 0.3s;
+        }
+
+        .insta-item:hover img {
+            scale: 1.1;
+        }
+
+        .pc-widget {
+            display: block;
+        }
+
+        .mobile-widget {
+        display: none;
+        }
+
+        /* ==========================================
+           4. Vision (Bold Statement)
+           ========================================== */
+        .vision {
+            background: var(--color-white);
+            color: var(--color-black);
+            padding: 150px var(--padding-x);
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .vision-huge-text {
+            font-size: clamp(3rem, 6vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+        }
+        
+        .vision-huge-text span {
+            color: var(--color-red);
+        }
+
+        .vision-content {
+            font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+            font-weight: 500;
+            line-height: 1.7;
+            color: var(--color-gray-dark);
+        }
+
+        .vision-content p {
+            margin-bottom: 30px;
+        }
+
+        .vision-content strong {
+            color: var(--color-black);
+            font-weight: 900;
+            border-bottom: 4px solid var(--color-red);
+        }
+
+        .vision-signature {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-top: 60px;
+        }
+
+        /* ==========================================
+           5. Pledges (Brutalist Index)
+           ========================================== */
+        .pledges {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 150px var(--padding-x);
+        }
+
+        .section-header-huge {
+            font-size: clamp(3rem, 7vw, 8rem);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            margin-bottom: 100px;
+            line-height: 1;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 40px;
+        }
+
+        .pledge-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: clamp(40px, 8vw, 120px);
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: start;
+            transition: padding-left 0.4s ease;
+        }
+
+        .pledge-item:hover {
+            padding-left: 40px; /* 호버 시 전체 항목이 살짝 밀리는 고급스러운 모션 */
+        }
+
+        .pledge-num {
+            font-size: clamp(6rem, 12vw, 16rem);
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(255,255,255,0.3);
+            line-height: 0.8;
+            font-family: 'Arial', sans-serif;
+            transition: all 0.4s ease;
+        }
+
+        .pledge-item:hover .pledge-num {
+            color: var(--color-red);
+            -webkit-text-stroke: 0;
+        }
+
+        .pledge-content {
+            max-width: 800px;
+        }
+
+        .pledge-title {
+            font-size: clamp(2.5rem, 3.5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -0.03em;
+            word-break: keep-all;
+        }
+
+        .pledge-subtitle {
+            display: block;
+            font-size: clamp(1.3rem, 2vw, 2rem);
+            color: var(--color-red);
+            margin-top: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .pledge-detail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .pledge-detail-item {
+            font-size: clamp(1.1rem, 1.2vw, 1.4rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.8);
+            position: relative;
+            padding-left: 24px;
+            line-height: 1.6;
+        }
+
+        .pledge-detail-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            background: var(--color-red);
+        }
+
+        /* ==========================================
+           6. Timeline (Stark Grid)
+           ========================================== */
+        .timeline {
+            background: var(--color-white);
+            color: var(--color-black);
+            padding: 150px var(--padding-x);
+        }
+
+        .timeline-grid {
+            border-top: 4px solid var(--color-black);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--color-gray-dark);
+            align-items: center;
+        }
+
+        .t-badge {
+            font-size: clamp(1.2rem, 2vw, 2rem);
+            font-weight: 900;
+            color: var(--color-red);
+            text-transform: uppercase;
+        }
+
+        .t-content h4 {
+            font-size: clamp(1.8rem, 2.5vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: -0.03em;
+        }
+
+        .t-content p {
+            font-size: clamp(1.1rem, 1.2vw, 1.4rem);
+            color: var(--color-gray-dark);
+            font-weight: 500;
+        }
+
+        /* ==========================================
+           7. Footer (Massive Statement)
+           ========================================== */
+        footer {
+            background: var(--color-red);
+            color: var(--color-white);
+            padding: 150px var(--padding-x) 50px;
+        }
+
+        .footer-slogan {
+            font-size: clamp(4rem, 8vw, 10rem);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            margin-bottom: 100px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 2px solid rgba(255,255,255,0.3);
+            padding-top: 40px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .f-info p {
+            margin-bottom: 5px;
+        }
+
+        /* ==========================================
+           Mobile Responsive Adjustments 
+           (1200px / 1024px / 768px / 576px)
+           ========================================== */
+        
+        /* 1200px: 데스크탑 및 큰 태블릿 (가로) */
+        @media (max-width: 1200px) {
+            .vision-grid {
+                gap: 60px;
+            }
+            .pledge-item {
+                gap: 80px;
+            }
+        }
+
+        /* 1024px: 일반 태블릿 (가로/세로) */
+        @media (max-width: 1024px) {
+            .pc-widget {
+                display: none;
+            }
+            
+            .mobile-widget {
+                display: block;
+             }
+            .vision-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            /* 태블릿에서 텍스트가 가로로 길게 이어지도록 처리 */
+            .vision-huge-text {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .vision-huge-text br {
+                display: none;
+            }
+            
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 40px 0;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+        }
+
+        /* 768px: 작은 태블릿 및 모바일 가로 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .hero {
+                justify-content: center;
+                padding-bottom: 5vh;
+            }
+
+            .insta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pledge-item {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 60px 0;
+            }
+            .pledge-item:hover {
+                padding-left: 0; /* 모바일에서는 호버 애니메이션 비활성화 (터치 간섭 방지) */
+            }
+            
+            .instagram {
+                padding: 80px var(--padding-x) 0;
+            }
+
+
+            /* 모바일 섹션 상하 여백 축소 */
+            .vision, .pledges, .timeline {
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+            footer {
+                padding-top: 100px;
+                padding-bottom: 40px;
+            }
+            
+            .section-header-huge {
+                margin-bottom: 60px;
+            }
+            .footer-slogan {
+                margin-bottom: 60px;
+            }
+        }
+
+        /* 576px: 스마트폰 세로 */
+        @media (max-width: 576px) {
+            :root {
+                --padding-x: 20px; /* 좌우 여백 고정 */
+            }
+            header {
+                padding: 20px var(--padding-x);
+            }
+            
+            /* 디테일 폰트 사이즈 강제 조정 (가독성 확보) */
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .hero-desc {
+                font-size: 1.15rem;
+            }
+            
+            .vision-huge-text {
+                flex-direction: column;
+                gap: 0;
+                font-size: 2.8rem;
+            }
+            .vision-huge-text br {
+                display: block; /* 모바일에서는 다시 줄바꿈 허용 */
+            }
+            
+            .section-header-huge {
+                font-size: 2.5rem;
+            }
+            
+            .pledge-num {
+                font-size: 4rem;
+            }
+            .pledge-title {
+                font-size: 1.8rem;
+            }
+            .pledge-detail-item {
+                padding-left: 20px;
+                font-size: 1.05rem;
+            }
+            .pledge-detail-item::before {
+                top: 8px;
+                width: 6px;
+                height: 6px;
+            }
+            
+            .t-badge {
+                font-size: 1.1rem;
+            }
+            .t-content h4 {
+                font-size: 1.5rem;
+            }
+            .t-content p {
+                font-size: 1.05rem;
+            }
+            
+            .footer-slogan {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#home" class="logo"><img src="/logo_02.png"></a>
+        <nav class="nav-links">
+            <a href="instagram">인스타그램</a>
+            <a href="#vision">비전</a>
+            <a href="#pledges">약속</a>
+            <a href="#timeline">발자취</a>
+        </nav>
+        <div class="menu-btn">MENU</div>
+    </header>
+
+    <!-- Hero Section (Full Cinematic) -->
+    <section id="home" class="hero">
+        <div class="hero-media">
+            <img src="/main_banner_03.jpg">
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge text-reveal"><span>국민의힘 경남도의원 통영시 제2선거구 후보</span></span>
+            <h1 class="hero-title">
+                <div class="text-reveal"><span style="transition-delay: 0.2s;">지금 <mark>꼭</mark></span></div>
+                <div class="text-reveal"><span style="transition-delay: 0.3s;">필요한 사람</span></div>
+            </h1>
+            <p class="hero-desc text-reveal">
+                <span style="transition-delay: 0.5s;">서울대 정책 전문가의 혜안과 법률가의 정직함으로<br>통영의 내일을 새롭게 열겠습니다.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+     <section id="instagram" class="instagram">
+        <div class="insta-grid">
+            <script src="https://snapwidget.com/js/snapwidget.js"></script>
+            <div class="widget-container pc-widget">
+                <a href="https://www.instagram.com/kimtaejong_ty/" target="_blank" rel="noopener noreferrer" class="click-overlay"></a>
+                <iframe src="https://snapwidget.com/embed/1122404" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; overflow: hidden; width: 100%; height: 518px;" title="Posts from Instagram" id="iFrameResizer0"></iframe>
+            </div>
+            <div class="widget-container mobile-widget">
+                <a href="https://www.instagram.com/kimtaejong_ty/" target="_blank" rel="noopener noreferrer" class="click-overlay"></a>
+                <iframe src="https://snapwidget.com/embed/1122408" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; overflow: hidden; width: 100%; height: 0px;" title="Posts from Instagram" id="iFrameResizer1"></iframe>
+            </div>
+        </div>
+     </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="vision">
+        <div class="vision-grid">
+            <div class="vision-huge-text reveal-up">
+                통영은<br>
+                더 좋아질 수<br>
+                <span>있습니다.</span>
+            </div>
+            <div class="vision-content reveal-up reveal-delay-1">
+                <p>서울대에서 정치학을 공부하고, 변호사로서 일하며 많은 사람들의 이야기를 들었습니다. 억울한 일을 겪은 분들, 법과 제도의 벽 앞에서 막막해하던 분들, 하루하루 성실히 살아가지만 정작 필요한 도움을 받지 못했던 분들을 만났습니다.</p>
+                <p>그때마다 저는 생각했습니다. <strong>정치는 거창한 말이 아니라 시민의 삶 가까이에 있어야 한다고.</strong> 이제 저는 그 마음으로 통영 앞에 서고자 합니다.</p>
+                <p>도의원은 멀리 있는 자리가 아닙니다. 통영과 도청 사이를 예산과 정책으로 연결하고, 시민의 불편을 제도로 바꾸고, 지역의 작은 목소리가 경남도정에 닿게 만드는 자리입니다.</p>
+                <div class="vision-signature">경남 도의원 통영시 제 2선거구 후보 김태종</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promises Section (Brutalist Index) -->
+    <section id="pledges" class="pledges">
+        <h2 class="section-header-huge reveal-up">김태종의 약속.</h2>
+        
+        <div class="pledge-item reveal-up">
+            <div class="pledge-num">01</div>
+            <div class="pledge-content">
+                <h3 class="pledge-title">
+                    미래 청년들에게 물려줄 첨단 산업화
+                    <span class="pledge-subtitle">에너지 자립과 청년 창업의 요람</span>
+                </h3>
+                <div class="pledge-detail-list">
+                    <div class="pledge-detail-item">통영형 햇빛소득마을 선도모델 구축 및 주민 소득 창출</div>
+                    <div class="pledge-detail-item">통영형 분산에너지 특화지역 지정 및 수산·해양 융합 마스터플랜</div>
+                    <div class="pledge-detail-item">통영형 분산에너지 특화지역 연계 4대 민생 혁신 전략 로드맵</div>
+                    <div class="pledge-detail-item">LNG냉열기반융복합신산업육성 및 대기업 투자를 위한 정책 거버넌스와 법·제도적 실행</div>
+                    <div class="pledge-detail-item">RE100 전환을 위한 통영 법송일반산업단지 해양바이오 · 스마트 콜드체인 거점 특화단지 리빌딩(Re-Building)</div>
+                    <div class="pledge-detail-item">통영형 기후위기 대응 및 청년 정착을 위한 에너지·농업 통합 실증센터 구축</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pledge-item reveal-up">
+            <div class="pledge-num">02</div>
+            <div class="pledge-content">
+                <h3 class="pledge-title">
+                    대한민국 제2의 수산경제 수도 “통영”
+                    <span class="pledge-subtitle">어민을 살리고, 세계의 입맛을 사로잡다</span>
+                </h3>
+                <div class="pledge-detail-list">
+                    <div class="pledge-detail-item">고수온·전기료 걱정 없는 안심 바다, 통영 어민 살리는 스마트 방제 인프라 및 에너지 자립 실증사업</div>
+                    <div class="pledge-detail-item">통영 도약을 위한 수산업 에너지 전환 5대 공약 제안서</div>
+                    <div class="pledge-detail-item">통영 「K-Blue 미식 콘텐츠 도시」 구축 실행계획</div>
+                    <div class="pledge-detail-item">통영 첨단 해양바이오 벤처센터(T-IOC) 유치</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pledge-item reveal-up">
+            <div class="pledge-num">03</div>
+            <div class="pledge-content">
+                <h3 class="pledge-title">
+                    통영 제2선거구 맞춤형 복지 및 구도심 부활
+                    <span class="pledge-subtitle">모두가 행복한 건강한 공동체</span>
+                </h3>
+                <div class="pledge-detail-list">
+                    <div class="pledge-detail-item">도천에서 무전까지 빈 점포의 화려한 변신! 우리동네 & 청춘 사랑방 & 통영형 복지 만물상 구축</div>
+                    <div class="pledge-detail-item">통영시 구도심 스마트팜·ESG 연계 생산형 도시재생 마스터플랜</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pledge-item reveal-up">
+            <div class="pledge-num">04</div>
+            <div class="pledge-content">
+                <h3 class="pledge-title">
+                    글로벌 야간도시 통영
+                    <span class="pledge-subtitle">1조 원대 관광 투자로 365일 빛나는 통영</span>
+                </h3>
+                <div class="pledge-detail-list">
+                    <div class="pledge-detail-item">통영 글로벌 RE100 빛 축제 및 야간관광 벨트 조성</div>
+                    <div class="pledge-detail-item">1조 1,400억 해양관광 투자 연계 「Zero-Carbon 통영」</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline">
+        <div class="timeline-grid">
+            <div class="timeline-item reveal-up">
+                <div class="t-badge">현재</div>
+                <div class="t-content">
+                    <h4>통영고등학교 총동창회 수석부회장</h4>
+                    <p>자랑스러운 통영의 인재들이 지역 사회와 상생할 수 있도록 동문 화합과 발전을 이끌고 있습니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal-up">
+                <div class="t-badge">현재</div>
+                <div class="t-content">
+                    <h4>통영초등학교 총동창회장</h4>
+                    <p>어린 시절의 꿈을 키워준 모교를 위해 헌신하며, 후배들의 든든한 지원군 역할을 다하고 있습니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal-up">
+                <div class="t-badge">경력</div>
+                <div class="t-content">
+                    <h4>사법연수원(36기) 수료</h4>
+                    <p>법률 전문가로서의 역량을 깊이 있게 다지고, 시민의 권리를 보호하기 위한 실무를 익혔습니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal-up">
+                <div class="t-badge">경력</div>
+                <div class="t-content">
+                    <h4>사법시험(46회) 합격</h4>
+                    <p>공정과 정의가 살아있는 사회를 만들겠다는 굳은 신념으로 치열하게 노력하여 합격의 결실을 맺었습니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal-up">
+                <div class="t-badge">학력</div>
+                <div class="t-content">
+                    <h4>서울대학교 정치학과 졸업</h4>
+                    <p>국가 정책과 정치 철학을 심도 있게 탐구하며, 더 나은 세상을 만들기 위한 학문적 기반을 다졌습니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal-up">
+                <div class="t-badge">학력</div>
+                <div class="t-content">
+                    <h4>통영고등학교 졸업</h4>
+                    <p>지역의 인재로서 자부심을 품고 학업에 매진하며 지역 사회에 기여하겠다는 큰 꿈을 키웠습니다.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal-up">
+                <div class="t-badge">학력</div>
+                <div class="t-content">
+                    <h4>통영중학교 졸업</h4>
+                    <p>꿈을 향한 도전의 시작, 고향 통영에서 성실하게 학창 시절을 보냈습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-slogan">
+            청년들이,<br>어르신들이<br>행복한 통영.
+        </div>
+        <div class="footer-bottom">
+            <div class="f-info">
+                <p><strong>경상남도의회의원선거 통영시 제2선거구 (북신·무전, 정량·도천, 명정·중앙)</strong></p>
+                <p>후보자: 김태종 | 전화: 010-4567-7938 | 이메일: ktj_9090@naver.com</p>
+            </div>
+            <div class="f-copyright">
+                &copy; 2026 Candidate Kim Tae-jong. Designed by The QR.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Transitions Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Hero Section 텍스트 초기 로딩 애니메이션
+            setTimeout(() => {
+                document.querySelectorAll('.text-reveal').forEach(el => {
+                    el.classList.add('active');
+                });
+            }, 100);
+
+            // 2. Intersection Observer 설정 (스크롤 애니메이션)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px', // 화면 하단에서 100px 위로 올라왔을 때 실행
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // 한번 나타나면 다시 숨기지 않음
+                    }
+                });
+            }, observerOptions);
+
+            // '.reveal-up' 클래스를 가진 모든 요소 관찰 시작
+            document.querySelectorAll('.reveal-up').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // 3. 부드러운 스크롤 이동
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
